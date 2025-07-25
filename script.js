@@ -1,3 +1,5 @@
+const myLibrary = []
+
 function Book(title, author, pages, read=false) {
   this.title = title
   this.author = author
@@ -9,3 +11,4 @@ function Book(title, author, pages, read=false) {
     return `${this.title} by ${this.author}, ${this.pages} pages, ${status}`
   }
 }
+

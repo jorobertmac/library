@@ -30,6 +30,27 @@ function makeCard(book) {
   card.className = "card"
   card.dataset.bookId = book.id
   cards.appendChild(card)
+  
+  const title = document.createElement("p")
+  title.className = "title"
+  title.textContent = book.title
+  card.appendChild(title)
+
+  const author = document.createElement("p")
+  author.className = "author"
+  author.textContent = book.author
+  card.appendChild(author)
+
+  const pages = document.createElement("p")
+  pages.className = "pages"
+  pages.textContent = book.pages
+  card.appendChild(pages)
+  
+  const description = document.createElement("p")
+  description.className = "description"
+  description.textContent = book.description
+  card.appendChild(description)
+  
 }
 
 myLibrary.push(new Book("One","Alpha",12,true))

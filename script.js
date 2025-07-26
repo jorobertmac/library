@@ -1,5 +1,5 @@
 const myLibrary = []
-const cards = document.getElementById("cards")
+const cards = document.querySelector("#cards")
 
 function Book(title, author, pages, read=false) {
   this.title = title

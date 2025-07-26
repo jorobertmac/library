@@ -28,7 +28,7 @@ function displayBooks () {
 function makeCard(book) {
   const card = document.createElement("div")
   card.className = "card"
-  card.innerHTML = `${book.info()} ${book.id}`
+  card.dataset.bookId = book.id
   cards.appendChild(card)
 }
 

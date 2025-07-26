@@ -20,3 +20,10 @@
   border: black 1px solid;
   padding: 10px;
 }
+
+[data-read-status=true] {
+  background-color: green;
+}
+[data-read-status=false] {
+  background-color: red;
+}

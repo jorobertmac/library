@@ -10,8 +10,15 @@ function Book(title, author, pages, description = "", read=false) {
   this.id = crypto.randomUUID()
 
   this.info = function() {
-    let status = this.read ? "read" : "not read"
-    return `${this.title} by ${this.author}, ${this.pages} pages, ${status}`
+    return `${this.title} by ${this.author}, ${this.pages} pages, ${this.readInfo()}`
+  }
+
+  this.readInfo = function() {
+    return this.read ? "Read" : "Not Read"
+  }
+
+  this.readStatus = function() {
+    this.read = !this.read
   }
 }
 
@@ -29,6 +36,7 @@ function makeCard(book) {
   const card = document.createElement("div")
   card.className = "card"
   card.dataset.bookId = book.id
+  card.dataset.readStatus = book.read
   cards.appendChild(card)
   
   const title = document.createElement("p")
@@ -50,7 +58,11 @@ function makeCard(book) {
   description.className = "description"
   description.textContent = book.description
   card.appendChild(description)
-  
+
+  const readStatus = document.createElement("button")
+  readStatus.className = "readStatus"
+  readStatus.textContent = `${book.readInfo()}`
+  card.appendChild(readStatus)
 }
 
 myLibrary.push(new Book("Whispers of the Void", "Elara Kade", 342, "A thrilling sci-fi adventure following a rogue pilot uncovering a galaxy-wide conspiracy.", true))

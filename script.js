@@ -1,4 +1,5 @@
 const myLibrary = []
+const cards = document.getElementById("cards")
 
 function Book(title, author, pages, read=false) {
   this.title = title
@@ -16,3 +17,21 @@ function Book(title, author, pages, read=false) {
 function addBookToLibrary(title, author, pages, read) {
   myLibrary.push(new Book(title, author, pages, read))
 }
+
+function displayBooks () {
+  myLibrary.forEach(book => {
+    makeCard(book)
+  });
+}
+
+function makeCard(book) {
+  const card = document.createElement("div")
+  card.className = "card"
+  card.innerHTML = `${book.info()} ${book.id}`
+  cards.appendChild(card)
+}
+
+myLibrary.push(new Book("One","Alpha",12,true))
+myLibrary.push(new Book("Two Two","Bravo Charlie",12,false))
+myLibrary.push(new Book("j","c",12,true))
+displayBooks()

@@ -1,10 +1,11 @@
 const myLibrary = []
 const cards = document.querySelector("#cards")
 
-function Book(title, author, pages, read=false) {
+function Book(title, author, pages, description = "", read=false) {
   this.title = title
   this.author = author
   this.pages = pages
+  this.description = description
   this.read = read
   this.id = crypto.randomUUID()
 
@@ -14,8 +15,8 @@ function Book(title, author, pages, read=false) {
   }
 }
 
-function addBookToLibrary(title, author, pages, read) {
-  myLibrary.push(new Book(title, author, pages, read))
+function addBookToLibrary(title, author, pages, description, read) {
+  myLibrary.push(new Book(title, author, pages, description, read))
 }
 
 function displayBooks () {

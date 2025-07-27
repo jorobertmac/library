@@ -1,4 +1,4 @@
-const myLibrary = []
+const myLibrary = {}
 const cards = document.querySelector("#cards")
 
 function Book(title, author, pages, description = "", read=false) {
@@ -23,13 +23,14 @@ function Book(title, author, pages, description = "", read=false) {
 }
 
 function addBookToLibrary(title, author, pages, description, read) {
-  myLibrary.push(new Book(title, author, pages, description, read))
+  const book = new Book(title, author, pages, description, read)
+  myLibrary[book.id] = book
 }
 
 function displayBooks () {
-  myLibrary.forEach(book => {
-    makeCard(book)
-  });
+for (const book in myLibrary) {
+    makeCard(myLibrary[book])
+  }
 }
 
 function makeCard(book) {
@@ -65,15 +66,15 @@ function makeCard(book) {
   card.appendChild(readStatus)
 }
 
-myLibrary.push(new Book("Whispers of the Void", "Elara Kade", 342, "A thrilling sci-fi adventure following a rogue pilot uncovering a galaxy-wide conspiracy.", true))
-myLibrary.push(new Book("The Crimson Veil", "Torin Vell", 487, "A gothic romance where a young scholar unravels the secrets of a haunted manor.", false))
-myLibrary.push(new Book("Echoes Over Emberfall", "Sylas Wren", 256, "A fantasy tale of a cursed bard seeking redemption in a war-torn kingdom.", true))
-myLibrary.push(new Book("Glass Horizons", "Mira Thalor", 613, "A dystopian novel about a hacker navigating a city of transparent walls and hidden truths.", false))
-myLibrary.push(new Book("The Starwoven Tapestry", "Kael Draven", 391, "An epic saga of a weaver who binds the fates of gods and mortals.", true))
-myLibrary.push(new Book("Shades of Iron", "Vera Quill", 178, "A gritty western where a lone gunslinger confronts her past in a lawless frontier.", true))
-myLibrary.push(new Book("The Last Clockmaker", "Oren Feld", 524, "A steampunk mystery about a clockmaker racing to stop a time-altering catastrophe.", false))
-myLibrary.push(new Book("Tides of Forgotten Songs", "Lirien Voss", 299, undefined, true))
-myLibrary.push(new Book("The Obsidian Crown", "Drenar Holt", 465, "A dark fantasy where a exiled prince battles to reclaim a cursed throne.", false))
-myLibrary.push(new Book("Silent Spires", "Auren Zeth", 320, "A post-apocalyptic tale of a scavenger exploring ancient towers for forgotten tech.", true))
+addBookToLibrary("Whispers of the Void", "Elara Kade", 342, "A thrilling sci-fi adventure following a rogue pilot uncovering a galaxy-wide conspiracy.", true)
+addBookToLibrary("The Crimson Veil", "Torin Vell", 487, "A gothic romance where a young scholar unravels the secrets of a haunted manor.", false)
+addBookToLibrary("Echoes Over Emberfall", "Sylas Wren", 256, "A fantasy tale of a cursed bard seeking redemption in a war-torn kingdom.", true)
+addBookToLibrary("Glass Horizons", "Mira Thalor", 613, "A dystopian novel about a hacker navigating a city of transparent walls and hidden truths.", false)
+addBookToLibrary("The Starwoven Tapestry", "Kael Draven", 391, "An epic saga of a weaver who binds the fates of gods and mortals.", true)
+addBookToLibrary("Shades of Iron", "Vera Quill", 178, "A gritty western where a lone gunslinger confronts her past in a lawless frontier.", true)
+addBookToLibrary("The Last Clockmaker", "Oren Feld", 524, "A steampunk mystery about a clockmaker racing to stop a time-altering catastrophe.", false)
+addBookToLibrary("Tides of Forgotten Songs", "Lirien Voss", 299, undefined, true)
+addBookToLibrary("The Obsidian Crown", "Drenar Holt", 465, "A dark fantasy where a exiled prince battles to reclaim a cursed throne.", false)
+addBookToLibrary("Silent Spires", "Auren Zeth", 320, "A post-apocalyptic tale of a scavenger exploring ancient towers for forgotten tech.", true)
 
 displayBooks()

@@ -32,19 +32,17 @@ function displayBooks () {
 for (const book in myLibrary) {
     makeCard(myLibrary[book])
   }
-  setReadStatusButton()
 }
 
-function setReadStatusButton() {
-  const readStatusButtons = document.querySelectorAll(".readStatus")
-  readStatusButtons.forEach(button => {
-    button.addEventListener("click", (e) => {
-      const id = button.parentElement.dataset.bookId
-      const card = document.querySelector(`[data-book-id="${id}"]`)
-      myLibrary[id].changeReadStatus()
-      card.dataset.readStatus = myLibrary[id].read
-      button.textContent = myLibrary[id].readInfo()
-    })
+function setReadStatusButton(book) {
+  const id = book.id
+  const card = document.querySelector(`[data-book-id="${id}"]`)
+  const readStatusButton = card.querySelector(`.readStatus`)
+
+  readStatusButton.addEventListener("click", (e) => {
+    myLibrary[id].changeReadStatus()
+    card.dataset.readStatus = myLibrary[id].read
+    e.target.textContent = myLibrary[id].readInfo()
   })
 }
 
@@ -79,6 +77,8 @@ function makeCard(book) {
   readStatus.className = "readStatus"
   readStatus.textContent = `${book.readInfo()}`
   card.appendChild(readStatus)
+
+  setReadStatusButton(book)
 }
 
 addBookToLibrary("Whispers of the Void", "Elara Kade", 342, "A thrilling sci-fi adventure following a rogue pilot uncovering a galaxy-wide conspiracy.", true)

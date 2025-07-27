@@ -28,6 +28,7 @@ function addBookToLibrary(title, author, pages, description, read) {
 }
 
 function displayBooks () {
+  cards.replaceChildren()
 for (const book in myLibrary) {
     makeCard(myLibrary[book])
   }

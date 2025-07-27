@@ -31,6 +31,20 @@ function displayBooks () {
 for (const book in myLibrary) {
     makeCard(myLibrary[book])
   }
+  setReadStatusButton()
+}
+
+function setReadStatusButton() {
+  const readStatusButtons = document.querySelectorAll(".readStatus")
+  readStatusButtons.forEach(button => {
+    button.addEventListener("click", (e) => {
+      const id = button.parentElement.dataset.bookId
+      const card = document.querySelector(`[data-book-id="${id}"]`)
+      myLibrary[id].changeReadStatus()
+      card.dataset.readStatus = myLibrary[id].read
+      button.textContent = myLibrary[id].readInfo()
+    })
+  })
 }
 
 function makeCard(book) {

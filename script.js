@@ -17,7 +17,7 @@ function Book(title, author, pages, description = "", read=false) {
     return this.read ? "Read" : "Not Read"
   }
 
-  this.readStatus = function() {
+  this.changeReadStatus = function() {
     this.read = !this.read
   }
 }

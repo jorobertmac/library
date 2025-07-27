@@ -93,15 +93,3 @@ addBookToLibrary("The Obsidian Crown", "Drenar Holt", 465, "A dark fantasy where
 addBookToLibrary("Silent Spires", "Auren Zeth", 320, "A post-apocalyptic tale of a scavenger exploring ancient towers for forgotten tech.", true)
 
 displayBooks()
-
-const readStatusButtons = document.querySelectorAll(".readStatus")
-
-readStatusButtons.forEach(button => {
-  button.addEventListener("click", (e) => {
-    const id = button.parentElement.dataset.bookId
-    const card = document.querySelector(`[data-book-id="${id}"]`)
-    myLibrary[id].changeReadStatus()
-    card.dataset.readStatus = myLibrary[id].read
-    button.textContent = myLibrary[id].readInfo()
-  })
-})

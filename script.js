@@ -22,8 +22,7 @@ function Book(title, author, pages, description = "", read=false) {
   }
 }
 
-function addBookToLibrary(title, author, pages, description, read) {
-  const book = new Book(title, author, pages, description, read)
+function addBookToLibrary(book) {
   myLibrary[book.id] = book
 }
 
@@ -81,15 +80,15 @@ function makeCard(book) {
   setReadStatusButton(book)
 }
 
-addBookToLibrary("Whispers of the Void", "Elara Kade", 342, "A thrilling sci-fi adventure following a rogue pilot uncovering a galaxy-wide conspiracy.", true)
-addBookToLibrary("The Crimson Veil", "Torin Vell", 487, "A gothic romance where a young scholar unravels the secrets of a haunted manor.", true)
-addBookToLibrary("Echoes Over Emberfall", "Sylas Wren", 256, "A fantasy tale of a cursed bard seeking redemption in a war-torn kingdom.", false)
-addBookToLibrary("Glass Horizons", "Mira Thalor", 613, "A dystopian novel about a hacker navigating a city of transparent walls and hidden truths.", true)
-addBookToLibrary("The Starwoven Tapestry", "Kael Draven", 391, "An epic saga of a weaver who binds the fates of gods and mortals.", true)
-addBookToLibrary("Shades of Iron", "Vera Quill", 178, "A gritty western where a lone gunslinger confronts her past in a lawless frontier.", false)
-addBookToLibrary("The Last Clockmaker", "Oren Feld", 524, "A steampunk mystery about a clockmaker racing to stop a time-altering catastrophe.", true)
-addBookToLibrary("Tides of Forgotten Songs", "Lirien Voss", 299, "A lyrical journey of a mermaid bard rediscovering her lost heritage.", false)
-addBookToLibrary("The Obsidian Crown", "Drenar Holt", 465, "A dark fantasy where a exiled prince battles to reclaim a cursed throne.", false)
-addBookToLibrary("Silent Spires", "Auren Zeth", 320, "A post-apocalyptic tale of a scavenger exploring ancient towers for forgotten tech.", false)
+addBookToLibrary(new Book("Whispers of the Void", "Elara Kade", 342, "A thrilling sci-fi adventure following a rogue pilot uncovering a galaxy-wide conspiracy.", true))
+addBookToLibrary(new Book("The Crimson Veil", "Torin Vell", 487, "A gothic romance where a young scholar unravels the secrets of a haunted manor.", true))
+addBookToLibrary(new Book("Echoes Over Emberfall", "Sylas Wren", 256, "A fantasy tale of a cursed bard seeking redemption in a war-torn kingdom.", false))
+addBookToLibrary(new Book("Glass Horizons", "Mira Thalor", 613, "A dystopian novel about a hacker navigating a city of transparent walls and hidden truths.", true))
+addBookToLibrary(new Book("The Starwoven Tapestry", "Kael Draven", 391, "An epic saga of a weaver who binds the fates of gods and mortals.", true))
+addBookToLibrary(new Book("Shades of Iron", "Vera Quill", 178, "A gritty western where a lone gunslinger confronts her past in a lawless frontier.", false))
+addBookToLibrary(new Book("The Last Clockmaker", "Oren Feld", 524, "A steampunk mystery about a clockmaker racing to stop a time-altering catastrophe.", true))
+addBookToLibrary(new Book("Tides of Forgotten Songs", "Lirien Voss", 299, "A lyrical journey of a mermaid bard rediscovering her lost heritage.", false))
+addBookToLibrary(new Book("The Obsidian Crown", "Drenar Holt", 465, "A dark fantasy where a exiled prince battles to reclaim a cursed throne.", false))
+addBookToLibrary(new Book("Silent Spires", "Auren Zeth", 320, "A post-apocalyptic tale of a scavenger exploring ancient towers for forgotten tech.", false))
 
 displayBooks()

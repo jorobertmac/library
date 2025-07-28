@@ -45,6 +45,17 @@ function setReadStatusButton(book) {
   })
 }
 
+function setRemoveBookButton(book) {
+  const id = book.id
+  const card = document.querySelector(`[data-book-id="${id}"]`)
+  const removeBookButton = card.querySelector(`.removeBook`)
+
+  removeBookButton.addEventListener("click", (e) => {
+    delete myLibrary[id]
+    card.parentNode.removeChild(card)
+  })
+}
+
 function makeCard(book) {
   const card = document.createElement("div")
   card.className = "card"
@@ -77,7 +88,13 @@ function makeCard(book) {
   readStatus.textContent = `${book.readInfo()}`
   card.appendChild(readStatus)
 
+  const removeBook = document.createElement("button")
+  removeBook.className = "removeBook"
+  removeBook.textContent = "Delete"
+  card.appendChild(removeBook)
+
   setReadStatusButton(book)
+  setRemoveBookButton(book)
 }
 
 addBookToLibrary(new Book("Whispers of the Void", "Elara Kade", 342, "A thrilling sci-fi adventure following a rogue pilot uncovering a galaxy-wide conspiracy.", true))

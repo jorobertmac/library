@@ -82,9 +82,9 @@ button {
   /* text-shadow: 0 0 15px rgba(255,255,255,1); */
 }
 
-[data-read-status=true] {
-  background-color: green;
+[data-read-status=true] .readStatus{
+  background-color: rgba(124, 235, 124, 0.6);
 }
-[data-read-status=false] {
-  background-color: red;
+[data-read-status=false] .readStatus{
+  background-color: rgba(214, 101, 101, 0.6);
 }

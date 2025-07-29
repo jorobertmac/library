@@ -60,6 +60,16 @@
   background-size: cover ;
   background-position: center;
   background-repeat: no-repeat;
+
+}
+
+.card p {
+  background-color: rgba(255, 255, 255, .6);
+  color: black;
+  width: fit-content;
+  border-radius: .15em;
+  /* mix-blend-mode: hard-light; */
+  /* text-shadow: 0 0 15px rgba(255,255,255,1); */
 }
 
 [data-read-status=true] {

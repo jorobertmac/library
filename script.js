@@ -84,15 +84,19 @@ function makeCard(book) {
   description.textContent = book.description
   card.appendChild(description)
 
+  const buttonBar = document.createElement("div")
+  buttonBar.className = "buttonBar"
+  card.appendChild(buttonBar)
+
   const readStatus = document.createElement("button")
   readStatus.className = "readStatus"
   readStatus.textContent = `${book.readInfo()}`
-  card.appendChild(readStatus)
+  buttonBar.appendChild(readStatus)
 
   const removeBook = document.createElement("button")
   removeBook.className = "removeBook"
   removeBook.textContent = "Delete"
-  card.appendChild(removeBook)
+  buttonBar.appendChild(removeBook)
 
   card.style.backgroundImage = `url(${book.artSource})`
 

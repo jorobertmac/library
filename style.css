@@ -4,6 +4,16 @@
   box-sizing: border-box;
 }
 
+button {
+  width: fit-content;
+}
+
+.buttonBar {
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+}
+
 #content {
   display: grid;
 

@@ -1,12 +1,13 @@
 const myLibrary = {}
 const cards = document.querySelector("#cards")
 
-function Book(title, author, pages, description = "", read=false) {
+function Book(title, author, pages, description = "", read=false, artSource=undefined) {
   this.title = title
   this.author = author
   this.pages = pages
   this.description = description
   this.read = read
+  this.artSource = artSource
   this.id = crypto.randomUUID()
 
   this.info = function() {
@@ -92,6 +93,8 @@ function makeCard(book) {
   removeBook.className = "removeBook"
   removeBook.textContent = "Delete"
   card.appendChild(removeBook)
+
+  card.style.backgroundImage = `url(${book.artSource})`
 
   setReadStatusButton(book)
   setRemoveBookButton(book)

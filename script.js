@@ -98,14 +98,24 @@ function makeCard(book) {
   removeBook.textContent = "Delete"
   buttonBar.appendChild(removeBook)
   
-  const readStatus = document.createElement("button")
+  // const readStatus = document.createElement("button")
+  // readStatus.className = "readStatus"
+  // readStatus.textContent = `${book.readInfo()}`
+  // buttonBar.appendChild(readStatus)
+
+  const readStatus = document.createElement("input")
+  readStatus.type = "checkbox"
   readStatus.className = "readStatus"
-  readStatus.textContent = `${book.readInfo()}`
+  readStatus.id = `${book.id}-checkbox`
+  const checkboxLabel = document.createElement("label")
+  checkboxLabel.htmlFor = `${book.id}-checkbox`
+  checkboxLabel.textContent = "Read"
+  buttonBar.appendChild(checkboxLabel)
   buttonBar.appendChild(readStatus)
 
   card.style.backgroundImage = `url(${book.artSource})`
 
-  setReadStatusButton(book)
+  // setReadStatusButton(book)
   setRemoveBookButton(book)
 }
 

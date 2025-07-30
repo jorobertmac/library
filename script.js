@@ -88,15 +88,20 @@ function makeCard(book) {
   buttonBar.className = "buttonBar"
   card.appendChild(buttonBar)
 
-  const readStatus = document.createElement("button")
-  readStatus.className = "readStatus"
-  readStatus.textContent = `${book.readInfo()}`
-  buttonBar.appendChild(readStatus)
-
+  const editBook = document.createElement("button")
+  editBook.className = "editBook"
+  editBook.textContent = "Edit"
+  buttonBar.appendChild(editBook)
+  
   const removeBook = document.createElement("button")
   removeBook.className = "removeBook"
   removeBook.textContent = "Delete"
   buttonBar.appendChild(removeBook)
+  
+  const readStatus = document.createElement("button")
+  readStatus.className = "readStatus"
+  readStatus.textContent = `${book.readInfo()}`
+  buttonBar.appendChild(readStatus)
 
   card.style.backgroundImage = `url(${book.artSource})`
 

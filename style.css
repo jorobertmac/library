@@ -9,9 +9,9 @@ button {
 }
 
 .buttonBar {
-  display: flex;
-  justify-content: center;
-  gap: 1em;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.5fr;
+  justify-items: center;
 }
 
 #content {

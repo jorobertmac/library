@@ -78,7 +78,7 @@ function makeCard(book) {
 
   const pages = document.createElement("p")
   pages.className = "pages"
-  pages.textContent = book.pages
+  pages.textContent = `${book.pages} pages`
   card.appendChild(pages)
   
   const description = document.createElement("p")

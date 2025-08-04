@@ -15,7 +15,7 @@ function Book(title, author, pages, description = "", read=false, artSource=unde
   }
 
   this.readInfo = function() {
-    return this.read ? "Read" : "Not Read"
+    return this.read ? "Read" : "Unread"
   }
 
   this.changeReadStatus = function() {
@@ -98,24 +98,14 @@ function makeCard(book) {
   removeBook.textContent = "Delete"
   buttonBar.appendChild(removeBook)
   
-  // const readStatus = document.createElement("button")
-  // readStatus.className = "readStatus"
-  // readStatus.textContent = `${book.readInfo()}`
-  // buttonBar.appendChild(readStatus)
-
-  const readStatus = document.createElement("input")
-  readStatus.type = "checkbox"
+  const readStatus = document.createElement("button")
   readStatus.className = "readStatus"
-  readStatus.id = `${book.id}-checkbox`
-  const checkboxLabel = document.createElement("label")
-  checkboxLabel.htmlFor = `${book.id}-checkbox`
-  checkboxLabel.textContent = "Read"
-  buttonBar.appendChild(checkboxLabel)
+  readStatus.textContent = `${book.readInfo()}`
   buttonBar.appendChild(readStatus)
 
   card.style.backgroundImage = `url(${book.artSource})`
 
-  // setReadStatusButton(book)
+  setReadStatusButton(book)
   setRemoveBookButton(book)
 }
 

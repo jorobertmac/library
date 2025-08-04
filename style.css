@@ -1,5 +1,7 @@
 :root {
   --text-background: rgba(255, 255, 255, .6);
+  /* --outline-border: 1px solid black */
+  --outline-border: none
 }
 
 * {
@@ -41,7 +43,7 @@ button {
   grid-area: nav;
   background-color: blanchedalmond;
   padding: 1em;
-  /* border: 1px solid black; */
+  border: var(--outline-border);
   border-radius: .25em;
 }
 
@@ -49,7 +51,7 @@ button {
   grid-area: header;
   background-color: blanchedalmond;
   padding: 1em;
-  /* border: 1px solid black; */
+  border: var(--outline-border);
     border-radius: .25em;
 }
 
@@ -57,7 +59,7 @@ button {
   grid-area: cards;
   background-color: bisque;
   padding: 1em;
-  /* border: 1px solid black; */
+  border: var(--outline-border);
     border-radius: .25em;
 
   display: flex;
@@ -86,8 +88,6 @@ button {
   width: fit-content;
   border-radius: .15em;
   padding: 1px 3px;
-  /* mix-blend-mode: hard-light; */
-  /* text-shadow: 0 0 15px rgba(255,255,255,1); */
 }
 
 [data-read-status=true] .readStatus{

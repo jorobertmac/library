@@ -52,7 +52,7 @@ function setRemoveBookButton(book) {
   const removeBookButton = card.querySelector(`.removeBook`)
 
   removeBookButton.addEventListener("click", (e) => {
-    if (confirm("Delete this book from your library?")) {
+    if (confirm(`Delete ${book.title} from your library?`)) {
       delete myLibrary[id]
       card.parentNode.removeChild(card)
     }

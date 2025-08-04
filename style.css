@@ -1,3 +1,7 @@
+:root {
+  --text-background: rgba(255, 255, 255, .6);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -6,6 +10,9 @@
 
 button {
   width: fit-content;
+  padding: 1px 3px;
+  border-radius: 3px;
+  background-color: var(--text-background);
 }
 
 .buttonBar {
@@ -74,7 +81,7 @@ button {
 }
 
 .card p {
-  background-color: rgba(255, 255, 255, .6);
+  background-color: var(--text-background);
   color: black;
   width: fit-content;
   border-radius: .15em;

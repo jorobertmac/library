@@ -28,7 +28,7 @@ button {
 
   grid-template: 
   "nav header " 100px
-  "nav cards " auto / minmax(100px, 150px)  minmax(300px, 1200px) 
+  "nav cards " auto / 200px  minmax(300px, 1200px) 
   ;
   
   gap: .25em;
@@ -42,6 +42,7 @@ button {
 #nav {
   grid-area: nav;
   background-color: blanchedalmond;
+  width: 200px;
   padding: 1em;
   border: var(--outline-border);
   border-radius: .25em;
@@ -89,6 +90,16 @@ button {
   border-radius: .15em;
   padding: 1px 3px;
 }
+
+.addBook {
+  display: flex;
+  flex-direction: column;
+  gap: .25em;
+}
+.bookInput {
+  width: 100%;
+}
+
 
 [data-read-status=true] .readStatus{
   background-color: rgba(124, 235, 124, 0.6);

@@ -29,10 +29,18 @@ function addBookToLibrary(book) {
 
 function displayBooks () {
   cards.replaceChildren()
-for (const book in myLibrary) {
+  for (const book in myLibrary) {
     makeCard(myLibrary[book])
   }
 }
+
+const addBookSubmit = document.querySelector("#addBookForm")
+addBookSubmit.addEventListener("submit", (e) => {
+  e.preventDefault()
+  const book = e.target
+  
+  book.reset()
+})
 
 function setReadStatusButton(book) {
   const id = book.id

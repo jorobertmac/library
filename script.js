@@ -35,12 +35,27 @@ function displayBooks () {
   }
 }
 
+
+// Find a way to get this under the addBookSubmit eventListener vvv
+const imageFile = document.querySelector("#image")
+let lastImage
+imageFile.addEventListener("change", (e) => {
+  const file = e.target.files[0]
+  if (file) {
+    const reader = new FileReader()
+    reader.onload = (e) => {
+      lastImage = e.target.result
+    }
+    lastImage = reader.readAsDataURL(file)
+  }
+})
+
+
 const addBookSubmit = document.querySelector("#addBookForm")
 addBookSubmit.addEventListener("submit", (e) => {
   e.preventDefault()
   const book = e.target
-
-  const newBook = new Book(book.title.value, book.author.value, book.pages.value, book.progress.value, book.description.value, false, book.image.value)
+  const newBook = new Book(book.title.value, book.author.value, book.pages.value, book.progress.value, book.description.value, false, lastImage)
   addBookToLibrary(newBook)
   makeCard(newBook)
   

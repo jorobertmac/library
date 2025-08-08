@@ -39,6 +39,11 @@ const addBookSubmit = document.querySelector("#addBookForm")
 addBookSubmit.addEventListener("submit", (e) => {
   e.preventDefault()
   const book = e.target
+
+  const newBook = new Book(book.title.value, book.author.value, book.pages.value, book.progress.value, book.description.value, false, book.image.value)
+  addBookToLibrary(newBook)
+  makeCard(newBook)
+  
   
   book.reset()
 })

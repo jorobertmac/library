@@ -118,11 +118,6 @@ function makeCard(book) {
   const buttonBar = document.createElement("div")
   buttonBar.className = "buttonBar"
   card.appendChild(buttonBar)
-
-  const editBook = document.createElement("button")
-  editBook.className = "editBook"
-  editBook.textContent = "Edit"
-  buttonBar.appendChild(editBook)
   
   const removeBook = document.createElement("button")
   removeBook.className = "removeBook"

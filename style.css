@@ -94,10 +94,15 @@ button {
 .addBook {
   display: flex;
   flex-direction: column;
-  gap: .25em;
+  gap: 1em;
+  margin: 1em 0;
 }
 .bookInput {
   width: 100%;
+}
+
+#addBookSubmit {
+  align-self: end;
 }
 
 

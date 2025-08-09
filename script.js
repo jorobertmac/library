@@ -116,8 +116,8 @@ function makeCard(book) {
 
   const pages = document.createElement("p")
   pages.className = "pages"
-  pages.textContent = `${book.progress} / ${book.pages} pg`
-  pages.style.background = `linear-gradient(to right, rgba(124, 235, 124, 0.6) ${book.progress/book.pages*100}%, rgba(214, 101, 101, 0.6) ${book.progress/book.pages*100}%)`
+  pages.textContent = `${book.progress}/${book.pages} pg`
+  pages.style.background = `linear-gradient(to right, rgba(124, 235, 124, 0.6) ${book.progress/book.pages*100}%, var(--text-background) ${book.progress/book.pages*100}%)`
   pages.style.textShadow = "0 0 3px blanchedalmond, 0 0 6px black, 0 0 10px blanchedalmond"
   statusBar.appendChild(pages)
 

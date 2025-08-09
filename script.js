@@ -10,10 +10,6 @@ function Book(title, author, pages, progress=0, description = "", artSource=unde
   this.artSource = artSource
   this.id = crypto.randomUUID()
 
-  this.info = function() {
-    return `${this.title} by ${this.author}, ${this.pages} pages, ${this.readInfo()}`
-  }
-
   this.readInfo = function() {
     const percentRead = this.progress/this.pages
     if (percentRead === 1) {

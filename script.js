@@ -1,13 +1,12 @@
 const myLibrary = {}
 const cards = document.querySelector("#cards")
 
-function Book(title, author, pages, progress=0, description = "", read=false, artSource=undefined) {
+function Book(title, author, pages, progress=0, description = "", artSource=undefined) {
   this.title = title
   this.author = author
   this.pages = pages
   this.progress = progress
   this.description = description
-  this.read = read
   this.artSource = artSource
   this.id = crypto.randomUUID()
 
@@ -16,12 +15,16 @@ function Book(title, author, pages, progress=0, description = "", read=false, ar
   }
 
   this.readInfo = function() {
-    return this.read ? "Read" : "Unread"
+    const percentRead = this.progress/this.pages
+    if (percentRead === 1) {
+      return "Read"
+    } else if (percentRead === 0) {
+      return "Unread"
+    } else {
+      return "Reading"
+    }
   }
 
-  this.changeReadStatus = function() {
-    this.read = !this.read
-  }
 }
 
 function addBookToLibrary(book) {
@@ -33,6 +36,14 @@ function displayBooks () {
   for (const book in myLibrary) {
     makeCard(myLibrary[book])
   }
+}
+
+function updateReadStatus(book) {
+  const id = book.id
+  const card = document.querySelector(`[data-book-id="${id}"]`)
+  const pages = card.querySelector(".pages")
+  pages.textContent = `${book.progress}/${book.pages} pg`
+  pages.style.background = `linear-gradient(to right, rgba(124, 235, 124, 0.6) ${book.progress/book.pages*100}%, var(--text-background) ${book.progress/book.pages*100}%)`
 }
 
 
@@ -55,7 +66,7 @@ const addBookSubmit = document.querySelector("#addBookForm")
 addBookSubmit.addEventListener("submit", (e) => {
   e.preventDefault()
   const book = e.target
-  const newBook = new Book(book.title.value, book.author.value, book.pages.value, book.progress.value, book.description.value, false, lastImage)
+  const newBook = new Book(book.title.value, book.author.value, book.pages.value, book.progress.value, book.description.value, lastImage)
   addBookToLibrary(newBook)
   makeCard(newBook)
   
@@ -69,9 +80,27 @@ function setReadStatusButton(book) {
   const readStatusButton = card.querySelector(`.readStatus`)
 
   readStatusButton.addEventListener("click", (e) => {
-    myLibrary[id].changeReadStatus()
-    card.dataset.readStatus = myLibrary[id].read
-    e.target.textContent = myLibrary[id].readInfo()
+    let pagesRead
+    while (true) {
+      pagesRead = prompt(`What page of ${book.title} are you on?`)
+      if (pagesRead === null) {
+        return
+      } else if (pagesRead.trim() !== "" && !isNaN(pagesRead)) {
+        pagesRead = Number(pagesRead)
+        if (pagesRead > book.pages) {
+          alert(`Cannot accept ${pagesRead} pages. ${book.title} only has ${book.pages} pages.`)
+          return
+        } else if (pagesRead < 0) {
+          alert(`Cannot accept ${pagesRead}. Only positive numbers.`)
+          return
+        }
+        break
+      }
+    }
+    book.progress = pagesRead
+    updateReadStatus(book)
+    card.dataset.readStatus = book.readInfo()
+    e.target.textContent = book.readInfo()
   })
 }
 
@@ -92,7 +121,7 @@ function makeCard(book) {
   const card = document.createElement("div")
   card.className = "card"
   card.dataset.bookId = book.id
-  card.dataset.readStatus = book.read
+  card.dataset.readStatus = book.readInfo()
   cards.appendChild(card)
   
   const title = document.createElement("p")
@@ -137,15 +166,15 @@ function makeCard(book) {
   setRemoveBookButton(book)
 }
 
-addBookToLibrary(new Book("Whispers of the Void", "Elara Kade", 342, 111, "A thrilling sci-fi adventure following a rogue pilot uncovering a galaxy-wide conspiracy.", true, "./art/whispers_of_the_void_1.jpg"))
-addBookToLibrary(new Book("The Crimson Veil", "Torin Vell", 487, 111, "A gothic romance where a young scholar unravels the secrets of a haunted manor.", true, "./art/crimson_veil_2.jpg"))
-addBookToLibrary(new Book("Echoes Over Emberfall", "Sylas Wren", 256, 0, "A fantasy tale of a cursed bard seeking redemption in a war-torn kingdom.", false, "./art/echos_over_emberfall_1.jpg"))
-addBookToLibrary(new Book("Glass Horizons", "Mira Thalor", 613, 111, "A dystopian novel about a hacker navigating a city of transparent walls and hidden truths.", true, "./art/glass_horizons_1.jpg"))
-addBookToLibrary(new Book("The Starwoven Tapestry", "Kael Draven", 391, 111, "An epic saga of a weaver who binds the fates of gods and mortals.", true, "./art/starwoven_tapestry_1.jpg"))
-addBookToLibrary(new Book("Shades of Iron", "Vera Quill", 178, 0, "A gritty western where a lone gunslinger confronts her past in a lawless frontier.", false, "./art/shade_of_iron_2.jpg"))
-addBookToLibrary(new Book("The Last Clockmaker", "Oren Feld", 524, 111, "A steampunk mystery about a clockmaker racing to stop a time-altering catastrophe.", true, "./art/last_clockmaker_1.jpg"))
-addBookToLibrary(new Book("Tides of Forgotten Songs", "Lirien Voss", 299, 0, "A lyrical journey of a mermaid bard rediscovering her lost heritage.", false, "./art/tides_of_forgotten_songs_1.jpg"))
-addBookToLibrary(new Book("The Obsidian Crown", "Drenar Holt", 465, 0, "A dark fantasy where a exiled prince battles to reclaim a cursed throne.", false, "./art/obsidian_crown_2.jpg"))
-addBookToLibrary(new Book("Silent Spires", "Auren Zeth", 320, 0, "A post-apocalyptic tale of a scavenger exploring ancient towers for forgotten tech.", false, "./art/silent_spires_2.jpg"))
+addBookToLibrary(new Book("Whispers of the Void", "Elara Kade", 342, 342, "A thrilling sci-fi adventure following a rogue pilot uncovering a galaxy-wide conspiracy.", "./art/whispers_of_the_void_1.jpg"))
+addBookToLibrary(new Book("The Crimson Veil", "Torin Vell", 487, 111, "A gothic romance where a young scholar unravels the secrets of a haunted manor.", "./art/crimson_veil_2.jpg"))
+addBookToLibrary(new Book("Echoes Over Emberfall", "Sylas Wren", 256, 0, "A fantasy tale of a cursed bard seeking redemption in a war-torn kingdom.", "./art/echos_over_emberfall_1.jpg"))
+addBookToLibrary(new Book("Glass Horizons", "Mira Thalor", 613, 111, "A dystopian novel about a hacker navigating a city of transparent walls and hidden truths.", "./art/glass_horizons_1.jpg"))
+addBookToLibrary(new Book("The Starwoven Tapestry", "Kael Draven", 391, 111, "An epic saga of a weaver who binds the fates of gods and mortals.", "./art/starwoven_tapestry_1.jpg"))
+addBookToLibrary(new Book("Shades of Iron", "Vera Quill", 178, 0, "A gritty western where a lone gunslinger confronts her past in a lawless frontier.", "./art/shade_of_iron_2.jpg"))
+addBookToLibrary(new Book("The Last Clockmaker", "Oren Feld", 524, 111, "A steampunk mystery about a clockmaker racing to stop a time-altering catastrophe.", "./art/last_clockmaker_1.jpg"))
+addBookToLibrary(new Book("Tides of Forgotten Songs", "Lirien Voss", 299, 0, "A lyrical journey of a mermaid bard rediscovering her lost heritage.", "./art/tides_of_forgotten_songs_1.jpg"))
+addBookToLibrary(new Book("The Obsidian Crown", "Drenar Holt", 465, 0, "A dark fantasy where a exiled prince battles to reclaim a cursed throne.", "./art/obsidian_crown_2.jpg"))
+addBookToLibrary(new Book("Silent Spires", "Auren Zeth", 320, 0, "A post-apocalyptic tale of a scavenger exploring ancient towers for forgotten tech.", "./art/silent_spires_2.jpg"))
 
 displayBooks()

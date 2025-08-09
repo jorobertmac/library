@@ -104,32 +104,32 @@ function makeCard(book) {
   author.className = "author"
   author.textContent = book.author
   card.appendChild(author)
-
-  const pages = document.createElement("p")
-  pages.className = "pages"
-  pages.textContent = `${book.progress} / ${book.pages} pages`
-  pages.style.background = `linear-gradient(to right, rgba(124, 235, 124, 0.6) ${book.progress/book.pages*100}%, rgba(214, 101, 101, 0.6) ${book.progress/book.pages*100}%)`
-  pages.style.textShadow = "0 0 3px blanchedalmond, 0 0 6px black, 0 0 10px blanchedalmond"
-  card.appendChild(pages)
   
   const description = document.createElement("p")
   description.className = "description"
   description.textContent = book.description
   card.appendChild(description)
+  
+  const statusBar = document.createElement("div")
+  statusBar.className = "statusBar"
+  card.appendChild(statusBar)
 
-  const buttonBar = document.createElement("div")
-  buttonBar.className = "buttonBar"
-  card.appendChild(buttonBar)
+  const pages = document.createElement("p")
+  pages.className = "pages"
+  pages.textContent = `${book.progress} / ${book.pages} pg`
+  pages.style.background = `linear-gradient(to right, rgba(124, 235, 124, 0.6) ${book.progress/book.pages*100}%, rgba(214, 101, 101, 0.6) ${book.progress/book.pages*100}%)`
+  pages.style.textShadow = "0 0 3px blanchedalmond, 0 0 6px black, 0 0 10px blanchedalmond"
+  statusBar.appendChild(pages)
+
+  const readStatus = document.createElement("button")
+  readStatus.className = "readStatus"
+  readStatus.textContent = `${book.readInfo()}`
+  statusBar.appendChild(readStatus)
   
   const removeBook = document.createElement("button")
   removeBook.className = "removeBook"
   removeBook.textContent = "Delete"
-  buttonBar.appendChild(removeBook)
-  
-  const readStatus = document.createElement("button")
-  readStatus.className = "readStatus"
-  readStatus.textContent = `${book.readInfo()}`
-  buttonBar.appendChild(readStatus)
+  card.appendChild(removeBook)
 
   card.style.backgroundImage = `url(${book.artSource})`
 

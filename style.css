@@ -26,8 +26,8 @@ button {
   display: grid;
 
   grid-template: 
-  "nav header " 100px
-  "nav cards " auto / 200px  minmax(300px, 1200px) 
+  "add header " 100px
+  "add cards " auto / 200px  minmax(300px, 1200px) 
   ;
   
   gap: .25em;
@@ -38,8 +38,8 @@ button {
   justify-content: center;
 }
 
-#nav {
-  grid-area: nav;
+#add {
+  grid-area: add;
   background-color: blanchedalmond;
   width: 200px;
   padding: 1em;

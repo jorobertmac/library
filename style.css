@@ -17,6 +17,10 @@ button {
   background-color: var(--text-background);
 }
 
+button:hover {
+  background-color: rgba(199, 199, 199, 1);
+}
+
 .statusBar {
   display: flex;
   justify-content: space-between;
@@ -111,5 +115,15 @@ button {
   background-color: rgba(214, 101, 101, 0.6);
 }
 [data-read-status="Reading"] .readStatus{
-  background-color: rgb(255, 165, 0, 0.6);
+  background-color: rgba(255, 165, 0, 0.6);
+}
+
+[data-read-status="Read"] .readStatus:hover{
+  background-color: rgba(124, 235, 124, 1);
+}
+[data-read-status="Unread"] .readStatus:hover{
+  background-color: rgba(214, 101, 101, 1);
+}
+[data-read-status="Reading"] .readStatus:hover{
+  background-color: rgba(255, 165, 0, 1);
 }

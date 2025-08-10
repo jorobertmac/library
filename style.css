@@ -87,7 +87,7 @@ ol {
   background-size: cover ;
   background-position: center;
   background-repeat: no-repeat;
-
+  background-color: wheat;
 }
 
 .card p {
@@ -96,6 +96,10 @@ ol {
   width: fit-content;
   border-radius: .15em;
   padding: 1px 3px;
+}
+.card p, .card button {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: .8em;
 }
 
 .addBook {

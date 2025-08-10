@@ -59,6 +59,10 @@ button:hover {
     border-radius: .25em;
 }
 
+ol {
+  list-style-position: inside;
+}
+
 #cards {
   grid-area: cards;
   background-color: bisque;

@@ -62,6 +62,16 @@ const addBookSubmit = document.querySelector("#addBookForm")
 addBookSubmit.addEventListener("submit", (e) => {
   e.preventDefault()
   const book = e.target
+  if (book.progress.value === "") {
+    book.progress.value = 0
+  } else if (book.progress.value < 0) {
+    alert(`Cannot accept ${book.progress.value}. Only positive numbers.`)
+    return
+  } else if (book.progress.value > book.pages.value) {
+    alert(`Cannot accept ${book.progress.value} pages. ${book.title.value} only has ${book.pages.value} pages.`)
+    return
+  }
+  
   const newBook = new Book(book.title.value, book.author.value, book.pages.value, book.progress.value, book.description.value, lastImage)
   addBookToLibrary(newBook)
   makeCard(newBook)

@@ -78,6 +78,7 @@ addBookSubmit.addEventListener("submit", (e) => {
   
   
   book.reset()
+  lastImage = ""
 })
 
 function setReadStatusButton(book) {

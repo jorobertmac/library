@@ -45,7 +45,7 @@ function updateReadStatus(book) {
 
 // Find a way to get this under the addBookSubmit eventListener vvv
 const imageFile = document.querySelector("#image")
-let lastImage
+let lastImage = ""
 imageFile.addEventListener("change", (e) => {
   const file = e.target.files[0]
   if (file) {
